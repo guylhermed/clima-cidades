@@ -1,3 +1,21 @@
+:root {
+  /*========= Cores =========*/
+  /* Mudar as cores favoritas */
+  --hue-color: 250; /*Roxo 250 - Verde 150 - Azul 225 - Rosa 340*/
+
+  /* Tema escuro */
+  --first-color: hsl(var(--hue-color), 85%, 55%);
+  --first-color-second: hsl(var(--hue-color), 100%, 85%);
+  --text-color: hsl(var(--hue-color), 85%, 99%);
+}
+
+/* Tema claro */
+body.dark-theme {
+  --first-color: hsl(var(--hue-color), 85%, 90%);
+  --first-color-second: hsl(var(--hue-color), 85%, 99%);
+  --text-color: hsl(var(--hue-color), 85%, 55%);
+}
+
 /* Geral */
 * {
   padding: 0;
@@ -6,28 +24,65 @@
 }
 
 body {
-  background: linear-gradient(180deg, #594cee 0%, #8dd0f5 100%);
+  background: linear-gradient(
+    180deg,
+    var(--first-color) 0%,
+    var(--first-color-second) 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  background-position: center;
+  background-size: cover;
+}
+
+/*========= Botão alterar tema claro/escuro =========*/
+.header {
+  width: 100%;
+  margin-top: 50px;
+  margin-inline: auto;
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.change-theme {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: var(--first-color-second);
+}
+
+.change-theme:hover {
+  color: var(--first-color);
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .container {
-  background-color: #5c54ed;
+  background-color: var(--first-color);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 2rem;
-  color: #fdfdfd;
+  color: var(--text-color);
   border-radius: 1rem;
+  max-width: 400px;
 }
 
-/* Formulário */
+/* Form */
 .form h3 {
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .form-input-container {
@@ -45,16 +100,19 @@ body {
   padding: 0.8rem;
   min-width: 50px;
   margin-left: 8px;
-  background-color: #8dd0f5;
-  color: #fff;
+  background-color: var(--first-color-second);
+  color: var(--text-color);
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 /* Clima */
-#weather-data {
-  border-top: 1px solid #fff;
+#weather-data,
+#error-message,
+#loader,
+#suggestions {
+  border-top: 1px solid var(--text-color);
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   text-align: center;
@@ -75,6 +133,10 @@ body {
   margin: 0.6rem;
 }
 
+#temperature {
+  font-size: 4rem;
+}
+
 #country {
   height: 15px;
 }
@@ -87,8 +149,8 @@ body {
 }
 
 #description {
-  font-weight: bold;
   text-transform: capitalize;
+  font-weight: bold;
 }
 
 #details-container {
@@ -97,8 +159,44 @@ body {
   align-items: center;
 }
 
-#details-container #humidity {
-  border-right: 1px solid #fff;
+#details-container #umidity {
+  border-right: 1px solid var(--text-color);
   margin: 0.6rem;
   padding: 0.6rem;
+}
+
+/* Loader */
+#loader i {
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sugestões */
+#suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#suggestions button {
+  min-width: 150px;
+  margin: 0.8rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10rem;
+  border: none;
+  background-color: var(--first-color-second);
+  color: var(--text-color);
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+#suggestions button:hover {
+  opacity: 1;
 }
