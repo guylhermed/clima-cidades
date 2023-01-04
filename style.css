@@ -1,7 +1,7 @@
 :root {
   /*========= Cores =========*/
   /* Mudar as cores favoritas */
-  --hue-color: 250; /*Roxo 250 - Verde 150 - Azul 225 - Rosa 340*/
+  --hue-color: 225; /*Roxo 250 - Verde 150 - Azul 225 - Rosa 340*/
 
   /* Tema escuro */
   --first-color: hsl(var(--hue-color), 85%, 55%);
@@ -24,12 +24,15 @@ body.dark-theme {
 }
 
 body {
-  background: linear-gradient(
+  background-image: url(./assets/bgimage4.jpg);
+  /* background: linear-gradient(
     180deg,
     var(--first-color) 0%,
     var(--first-color-second) 100%
-  );
+  ); */
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -39,23 +42,19 @@ body {
 }
 
 /*========= Botão alterar tema claro/escuro =========*/
-.header {
-  width: 100%;
-  margin-top: 50px;
+.footer {
   margin-inline: auto;
   display: flex;
-  position: fixed;
-  top: 0;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  height: 3rem;
 }
 
 .change-theme {
   font-size: 1.5rem;
   color: var(--text-color);
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 35%;
   padding: 0.5rem;
   background-color: var(--first-color-second);
 }
@@ -81,8 +80,7 @@ body {
 .form h3 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .form-input-container {
@@ -199,4 +197,10 @@ body {
 
 #suggestions button:hover {
   opacity: 1;
+}
+
+@media screen and (max-width: 459px) {
+  body {
+    margin-inline: 20px;
+  }
 }
