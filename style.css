@@ -25,17 +25,13 @@ body.dark-theme {
 
 body {
   background-image: url(./assets/bgimage4.jpg);
-  /* background: linear-gradient(
-    180deg,
-    var(--first-color) 0%,
-    var(--first-color-second) 100%
-  ); */
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding-block: 30px;
 
   background-position: center;
   background-size: cover;
